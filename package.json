@@ -1,0 +1,44 @@
+{
+  "name": "habitrice-api",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Denis Skvortsov <diayuokaro@gmail.com>",
+  "main": "index",
+  "type": "module",
+  "scripts": {
+    "start": "node index",
+    "dev": "nodemon index"
+  },
+  "imports": {
+    "#*": {
+      "default": "./*"
+    },
+    "#config": {
+      "default": "./config/index.js"
+    },
+    "#controllers/*": {
+      "default": "./controllers/*"
+    },
+    "#core": {
+      "default": "./core/init.js"
+    },
+    "#database": {
+      "default": "./database/index.js"
+    },
+    "#middleware": {
+      "default": "./middleware/index.js"
+    },
+    "#models/*": {
+      "default": "./models/*"
+    },
+    "#modules/*": {
+      "default": "./models/*"
+    },
+    "#routes": {
+      "default": "./routes/index.js"
+    },
+    "#utils/*": {
+      "default": "./models/*"
+    }
+  }
+}
