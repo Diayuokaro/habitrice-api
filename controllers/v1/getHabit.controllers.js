@@ -14,12 +14,4 @@ export default async (req, res) => {
     const habits = await Habit.getAll(subject)
     await res.json(habits)
   }
-
-  // if (req.params.id) {
-  //   const user = await User.getById(req.params.id)
-  //   await res.json(user)
-  // } else {
-  //   const users = await User.getAll()
-  //   await res.json(users)
-  // }
 }

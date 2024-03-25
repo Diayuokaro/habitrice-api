@@ -11,8 +11,4 @@ export default async (req, res) => {
 
   const habit = await Habit.deleteById(req.params.id, subject)
   await res.json(habit)
-  // if (!req.params.id) return
-
-  // const user = await User.deleteById(req.params.id)
-  // await res.json(user)
 }
