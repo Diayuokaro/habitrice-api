@@ -6,7 +6,7 @@ export default async (req, res) => {
   if (!await User.validateCredentials(username, passwd)) return res.status(401).send()
   const subject = await User.getByUsername(username)
 
-  if (!req.params.id) return res.status(401).send()
+  if (!req.params.id) return
 
   const user = await User.deleteById(req.params.id, subject)
   await res.json(user)
