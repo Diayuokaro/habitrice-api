@@ -6,14 +6,18 @@ const modelName = 'user'
 const modelSchema = new Schema({
   username: {
     type: String,
+    minLength: 4,
+    maxLength: 24,
     unique: true,
     required: true,
   },
   fullname: {
+    maxLength: 48,
     type: String,
   },
   pronouns: {
     type: String,
+    maxLength: 24,
   },
   picture: {
     type: String,

@@ -9,13 +9,17 @@ const modelSchema = new Schema({
   },
   title: {
     type: String,
+    minLength: 1,
+    maxLength: 64,
     required: true,
   },
   description: {
     type: String,
+    maxLength: 512,
   },
   worth: {
     type: Number,
+    min: 0,
     default: 1,
   },
   frequency: {
