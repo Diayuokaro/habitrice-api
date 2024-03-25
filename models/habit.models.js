@@ -40,9 +40,10 @@ const modelSchema = new Schema({
 modelSchema.statics.create = async function(query, subject) {
   const habit = await this.model(modelName)({
     owner: subject._id,
-    title: query.title,
-    description: query.description,
-    frequency: query.frequency,
+    title: query?.title,
+    description: query?.description,
+    frequency: query?.frequency,
+    worth: query?.worth,
     createdAt: Date.now(),
     lastModifyDate: Date.now(),
   })
