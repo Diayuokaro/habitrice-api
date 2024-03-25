@@ -6,8 +6,11 @@ export default async (req, res) => {
   if (!await User.validateCredentials(username, passwd)) return res.status(401).send()
   const subject = await User.getByUsername(username)
 
-  if (!req.params.id) return
-
-  const user = await User.modifyById(req.params.id, req.body, subject)
-  await res.json(user)
+  if (req.params.id) {
+    // const user = await User.getById(req.params.id, subject)
+    // await res.json(user)
+  } else {
+    const user = await User.getRatingByAccount()
+    await res.json(user)
+  }
 }

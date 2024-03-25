@@ -1,8 +1,12 @@
 import Habit from '#models/habit.models.js'
+import User from '#models/user.models.js'
 
 export default async (req, res) => {
-  // if (req.params.id) return
+  const [_, username, passwd] = Buffer.from(req.headers.authorization.replace('Basic ', ''), 'base64').toString('utf-8').match(/(.*):(.*)/)
 
-  // const user = await User.create(req.body)
-  // await res.json(user)
+  if (!await User.validateCredentials(username, passwd)) return res.status(401).send()
+  const subject = await User.getByUsername(username)
+
+  const habit = await Habit.create(req.body, subject)
+  await res.json(habit)
 }
