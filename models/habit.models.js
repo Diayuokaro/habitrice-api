@@ -1,4 +1,4 @@
-import { Types, Schema, model } from 'mongoose'
+import { Types, Schema, model, Query } from 'mongoose'
 
 const modelName = 'habit'
 
@@ -64,6 +64,16 @@ modelSchema.statics.getById = async function(_id, subject) {
   if (subject._id === habit.owner) return
 
   return habit
+}
+
+modelSchema.statics.deleteById = async function(_id, subject) {
+  if (!await this.model(modelName).exists({ _id })) return
+
+  const habit = await this.model(modelName).findById(_id)
+
+  if (subject._id === habit.owner) return
+
+  return await this.model(modelName).findByIdAndDelete(_id)
 }
 
 // modelSchema.statics.create = async function(query) {
